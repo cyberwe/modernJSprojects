@@ -21,5 +21,33 @@ function loadEventListeners(){
 function addTask(e){
 
     e.preventDefault();
-    console.log("YOu got it");
+    
+    if(taskInput.value===""){
+        console.log("You gotta be kidding me?!\nEnter a task.");
+    }
+
+    // Creating list items
+    const li=document.createElement("li");
+
+    // Add a class
+    li.className="collection-item";
+
+    // Create text node and append it to li
+    li.appendChild(document.createTextNode(taskInput.value));
+
+    // Create a new link element
+    const link=document.createElement("a");
+
+    // Add a class to it
+    link.className="delete-item secondary-content";
+
+    // Add icon html
+    link.innerHTML='<i class="fa fa-remove"></i>';
+
+    // Append the link to li and then to ul
+    li.appendChild(link);
+    taskList.appendChild(li);
+
+    // Clear input
+    taskInput.value="";
 }
